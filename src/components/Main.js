@@ -34,17 +34,21 @@ const Main = () => {
             setCheckUpdated(!checkUpdated);
         }
     }
-    const handleDelete=(id)=>{
-        fetch(`https://todo-backend-1qnd.onrender.com/${id}`, {
+    const handleDelete=async (id)=>{
+        const res = await fetch(`https://todo-backend-1qnd.onrender.com/${id}`, {
             method:"DELETE"
-        }).then(setCheckUpdated(!checkUpdated));
+        });
+
+        const deletedRow = await res.json();
+        if(deletedRow){
+            alert("Row Deleted");
+            setCheckUpdated(!checkUpdated);
+        }
+        else{
+            alert("Invalid action")
+        }
        
     }
-
-    // const handleEdit = (x)=>{
-    //     console.log(x)
-    //     {<Edit rowData={x} setData={setData}/>}
-    // }
     
     useEffect(()=>{
         
