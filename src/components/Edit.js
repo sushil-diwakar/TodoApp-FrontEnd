@@ -52,7 +52,7 @@ const handleUpdate= async (e)=>{
 }
 useEffect(()=>{
         
-  fetch('https://todo-backend-1qnd.onrender.com//getAllNotes', {
+  fetch('/getAllNotes', {
       method: "GET",
   }).then((res)=>res.json()).then((storedData)=>{
       props.setData(storedData);

@@ -48,7 +48,7 @@ const Main = () => {
     
     useEffect(()=>{
         
-        fetch('https://todo-backend-1qnd.onrender.com/getAllNotes', {
+        fetch('/getAllNotes', {
             method: "GET",
         }).then((res)=>res.json()).then((storedData)=>{
             setData(storedData);
