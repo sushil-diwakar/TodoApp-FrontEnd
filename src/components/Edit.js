@@ -31,7 +31,7 @@ const handleUpdate= async (e)=>{
     alert("Please Fill the details");
   }
   else{
-      const res = await fetch(`/${props.rowData._id}`, {
+      const res = await fetch(`https://todo-backend-1qnd.onrender.com/${props.rowData._id}`, {
           method:"PATCH",
           headers:{
               "Content-Type": "application/json"
@@ -52,7 +52,7 @@ const handleUpdate= async (e)=>{
 }
 useEffect(()=>{
         
-  fetch('/getAllNotes', {
+  fetch('https://todo-backend-1qnd.onrender.com/getAllNotes', {
       method: "GET",
   }).then((res)=>res.json()).then((storedData)=>{
       props.setData(storedData);

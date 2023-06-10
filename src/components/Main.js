@@ -16,7 +16,7 @@ const Main = () => {
     const handleSubmit= async (e)=>{
         e.preventDefault();
         const {title, description} = notes;
-        const res = await fetch('/add', {
+        const res = await fetch('https://todo-backend-1qnd.onrender.com/add', {
             method:"POST",
             headers:{
                 "Content-Type": "application/json"
@@ -35,7 +35,7 @@ const Main = () => {
         }
     }
     const handleDelete=(id)=>{
-        fetch(`/${id}`, {
+        fetch(`https://todo-backend-1qnd.onrender.com/${id}`, {
             method:"DELETE"
         }).then(setCheckUpdated(!checkUpdated));
        
@@ -48,7 +48,7 @@ const Main = () => {
     
     useEffect(()=>{
         
-        fetch('/getAllNotes', {
+        fetch('https://todo-backend-1qnd.onrender.com/getAllNotes', {
             method: "GET",
         }).then((res)=>res.json()).then((storedData)=>{
             setData(storedData);
