@@ -9,7 +9,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 function App() {
   return (
     <Router>
-      <Header title="ToDo App"/>  
+      <Header title="To-Do App"/>  
       <Routes>
           <Route exact path="/" element={<Main/>}/>
           <Route exact path="/about" element={<About/>}/>
