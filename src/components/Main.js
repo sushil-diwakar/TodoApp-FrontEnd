@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useState } from "react";
 import Edit from './Edit';
 
-const Main = () => {
+const Main = ({mode}) => {
 
     const [notes, setNotes] = useState({title:"",description:""});
     const [data, setData] = useState();
@@ -66,22 +66,24 @@ const Main = () => {
         <div className="container">
             <form className='form' method='POST'>
             <div className="mb-3 mt-3">
-                <input type="text" name="title" className="form-control" id="titleText" placeholder='Enter Title' onChange={handleInputs} value={notes.title}/>
+                <input type="text" name="title" style={{backgroundColor:`${mode==='dark'?'#635985':'white'}`, color:`${mode==='dark'?'white':'black'}`}} className="form-control" id="titleText" placeholder='Enter Title' onChange={handleInputs} value={notes.title}/>
             </div>
             <div className="mb-3">
-                <textarea className="form-control" name="description" id="descText" placeholder='Enter Description' onChange={handleInputs} value={notes.description}></textarea>
+                <textarea style={{backgroundColor:`${mode==='dark'?'#635985':'white'}`, color:`${mode==='dark'?'white':'black'}`}} className="form-control" name="description" id="descText" placeholder='Enter Description' onChange={handleInputs} value={notes.description}></textarea>
             </div>
             <button  className="btn btn-primary" onClick={handleSubmit}>Add Task</button>
             </form>
         </div>
         
         {data && data.length >0 ?<div className="container">
-            <table className="table">
-                <tr>
-                    {/* <th>id</th> */}
-                    <th>Title</th>
-                    <th>Description</th>
-                </tr>
+            <table className="table" style={{color:`${mode==='dark'?'white':'black'}`}}>
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
                 {data && data.map((x) => (
               <tr>
                 {/* <td>{x._id}</td> */}
@@ -89,10 +91,10 @@ const Main = () => {
                 <td>{x.description}</td>
                 <td><Edit rowData={x} setData={setData}/></td>
                 {/* <td><button onClick={handleEdit(x)}>Edit</button></td> */}
-                <td><button onClick={() => handleDelete(x._id)}>Delete</button></td>
+                <td><button className="btn btn-danger btn-sm" onClick={() => handleDelete(x._id)}>Delete</button></td>
               </tr>
             ))}
-                
+                </tbody>
             </table>
         </div>:<h5 className='text-center'>No Task to display</h5>}
         
