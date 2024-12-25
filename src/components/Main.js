@@ -16,7 +16,7 @@ const Main = ({mode}) => {
     const handleSubmit= async (e)=>{
         e.preventDefault();
         const {title, description} = notes;
-        const res = await fetch('https://todo-backend-1qnd.onrender.com/add', {
+        const res = await fetch(`${process.env.REACT_APP_API_URL}/add`, {
             method:"POST",
             headers:{
                 "Content-Type": "application/json"
@@ -35,7 +35,7 @@ const Main = ({mode}) => {
         }
     }
     const handleDelete=async (id)=>{
-        const res = await fetch(`https://todo-backend-1qnd.onrender.com/${id}`, {
+        const res = await fetch(`${process.env.REACT_APP_API_URL}/${id}`, {
             method:"DELETE"
         });
 
@@ -52,7 +52,7 @@ const Main = ({mode}) => {
     
     useEffect(()=>{
         
-        fetch('https://todo-backend-1qnd.onrender.com/getAllNotes', {
+        fetch(`${process.env.REACT_APP_API_URL}/getAllNotes`, {
             method: "GET",
         }).then((res)=>res.json()).then((storedData)=>{
             setData(storedData);
